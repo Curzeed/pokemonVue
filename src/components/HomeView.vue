@@ -76,7 +76,6 @@ export default {
 
 <template>
   <div @scroll.passive="onScroll" ref="scrollContainer" class="scroll-container">
-    <h2>Data View</h2>
     <input v-model="searchQuery" @input="onSearch" placeholder="Rechercher un Pokémon..." />
     <loading :active.sync="loading" :is-full-page="true"/>
     <div v-if="error">{{ error }}</div>
