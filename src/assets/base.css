@@ -1,0 +1,7 @@
+/* Importer une police de Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+/* Appliquer la police à tout le document */
+body {
+    font-family: 'Roboto', sans-serif;
+}

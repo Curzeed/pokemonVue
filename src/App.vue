@@ -1,5 +1,4 @@
 <script setup>
-
 </script>
 
 <template>
@@ -19,6 +18,7 @@
             <router-link to="/contact">Contact</router-link>
           </li>
         </ul>
+
       </nav>
     </div>
   </header>
@@ -48,5 +48,8 @@
 }
 .nav-item{
   margin: 0 1rem;
+}
+body {
+  font-family: 'Roboto', sans-serif;
 }
 </style>

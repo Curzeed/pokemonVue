@@ -10,5 +10,8 @@ const apiClient = axios.create({
 export default {
     getData(endpoint){
         return apiClient.get(endpoint);
+    },
+    getDataSimple(url){
+        return axios.get(url);
     }
 }

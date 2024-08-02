@@ -1,5 +1,5 @@
 <script setup>
-import {onMounted, ref} from "vue";
+import {capitalize, onMounted, ref} from "vue";
 
 const props = defineProps({
   pokemon : Object,
@@ -8,9 +8,6 @@ const imgSrc = ref(null);
 onMounted(() => {
   imgSrc.value = props.pokemon.sprites.other.dream_world.front_default;
 })
-function capitalize(string) {
-  return string.charAt(0).toUpperCase() + string.slice(1);
-}
 </script>
 
 <template>
@@ -79,93 +76,5 @@ function capitalize(string) {
   background-color: #000;
   color: #fff;
 }
-.bug {
-  background: #92BC2C;
-
-}
-
-.dark {
-  background: #595761;
-
-}
-
-.dragon {
-  background: #0C69C8;
-
-}
-
-.electric {
-  background: #F2D94E;
-
-}
-
-.fire {
-  background: #FBA54C;
-
-}
-
-.fairy {
-  background: #EE90E6;
-
-}
-
-.fighting {
-  background: #D3425F;
-
-}
-
-.flying {
-  background: #A1BBEC;
-
-}
-
-.ghost {
-  background: #5F6DBC;
-
-}
-
-.grass {
-  background: #5FBD58;
-
-}
-
-.ground {
-  background: #DA7C4D;
-
-}
-
-.ice {
-  background: #75D0C1;
-}
-
-.normal {
-  background: #A0A29F;
-
-}
-
-.poison {
-  background: #B763CF;
-
-}
-
-.psychic {
-  background: #FA8581;
-
-}
-
-.rock {
-  background: #C9BB8A;
-
-}
-
-.steel {
-  background: #5695A3;
-
-}
-
-.water {
-  background: #539DDF;
-
-}
-
 </style>
+<style src="../assets/pokemon_types.css"></style>
