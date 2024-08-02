@@ -2,7 +2,11 @@
     background: #92BC2C;
 
 }
-
+.badge{
+    padding: 5px;
+    border-radius: 5px;
+    color: white;
+}
 .dark {
     background: #595761;
 

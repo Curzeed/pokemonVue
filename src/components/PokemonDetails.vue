@@ -6,11 +6,14 @@ import Loading from "vue-loading-overlay";
 import 'vue-loading-overlay/dist/css/index.css';
 import BarStatPokemonComponent from '@/components/BarStatPokemonComponent.vue';
 import {truncateText} from "@/api/helper.js";
-import TruncatedText from "@/components/TruncatedText.vue"; // Ajustez le chemin selon votre structure de projet
+import TruncatedText from "@/components/TruncatedText.vue";
+import PokemonAbilityComponent from "@/components/PokemonAbilityComponent.vue"; // Ajustez le chemin selon votre structure de projet
+import 'boxicons'
+import PokemonCarousel from "@/components/PokemonCarousel.vue";
 
 export default {
   methods: {truncateText, capitalize},
-  components: {TruncatedText, BarStatPokemonComponent, Loading },
+  components: {PokemonCarousel, PokemonAbilityComponent, TruncatedText, BarStatPokemonComponent, Loading },
   setup() {
     // Récupérer le paramètre de route
     const route = useRoute();
@@ -60,7 +63,7 @@ export default {
     <div v-else-if="pokemon">
       <div class="pokemon-detail-container">
         <div class="pokemon-header">
-          <img :src="imgSrc" alt="Pokemon Image" class="pokemon-image" />
+          <PokemonCarousel :pokemon="pokemon" :img-src="imgSrc"  :key="$route.params.id"> </PokemonCarousel>
           <h1 class="pokemon-name">{{ pokemon.name }}</h1>
           <div class="pokemon-types">
             <span v-for="type in pokemon.types" :key="type.type.name" :class="'type ' + type.type.name">{{ type.type.name }}</span>
@@ -81,28 +84,7 @@ export default {
         </div>
         <div class="pokemon-spells">
           <h2>Spells</h2>
-          <table>
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Power</th>
-                <th>Type</th>
-                <th>PP</th>
-                <th>Accuracy</th>
-                <th>Effect</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr v-for="move in moves">
-                <td>{{ capitalize(move.name) }}</td>
-                <td>{{ move.power || '-' }}</td>
-                <td :class="move.type.name + ' badge'">{{capitalize(move.type.name)}}</td>
-                <td>{{ move.pp }}</td>
-                <td>{{ move.accuracy ? (move.accuracy + '%') : '-'}}</td>
-                <td><TruncatedText :text="move.effect_entries[0] ? truncateText(move.effect_entries[0].effect) : '-'" :maxLength="100"></TruncatedText></td>
-              </tr>
-            </tbody>
-          </table>
+          <PokemonAbilityComponent :moves="moves"></PokemonAbilityComponent>
         </div>
       </div>
     </div>
@@ -110,10 +92,11 @@ export default {
 </template>
 
 <style scoped>
-.badge{
-  padding: 5px;
-  border-radius: 5px;
-  color: white;
+.mini-carousel{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-bottom: 10px;
 }
 .pokemon-detail-container {
   max-width: 800px;
